@@ -2,7 +2,7 @@ fn is_anagram(s: String, t: String) -> bool {
     if s.len() != t.len() {
         return false;
     }
-    
+
     let mut s_count = vec![0; 26];
 
     for c in s.chars() {
