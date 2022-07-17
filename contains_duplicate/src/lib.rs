@@ -1,8 +1,9 @@
 use std::collections::HashSet;
 
-struct Solution {}
+pub struct Solution {}
 
 impl Solution {
+    #[inline]
     pub fn contains_duplicate(nums: Vec<i32>) -> bool {
         let mut counter: HashSet<i32> = HashSet::new();
 
@@ -16,11 +17,21 @@ impl Solution {
 
         false
     }
-}
 
-fn main() {
-    let numbers = vec![1,2,3,1];
-    println!("{}", Solution::contains_duplicate(numbers));
+    #[inline]
+    pub fn contains_duplicate_2(nums: Vec<i32>) -> bool {
+        let mut counter: Vec<i32> = Vec::new();
+
+        for i in nums {
+            if counter.contains(&i) {
+                return true;
+            } else {
+                counter.push(i);
+            }
+        }
+
+        false
+    }
 }
 
 #[cfg(test)]
