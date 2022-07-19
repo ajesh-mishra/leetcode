@@ -7,4 +7,5 @@ fn main() {
         Some(Rc::new(RefCell::new(t)))
     );
     println!("{:?}", s);
+    println!("");
 }
