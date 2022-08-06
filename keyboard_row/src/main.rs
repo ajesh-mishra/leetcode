@@ -13,10 +13,8 @@ impl Solution {
 
     pub fn find_words(self, words: Vec<String>) -> Vec<String> {
         let mut output: Vec<String> = Vec::new();
-
         for word in words {
             let mut count: i32 = 0;
-
             for w in word.chars() {
                 if self.q_row.contains(w) {
                     count += 1;
@@ -24,17 +22,16 @@ impl Solution {
                     count += 5;
                 }
             }
-
             match count.abs() {
                 0 => output.push(word),
                 len => {
-                    if len == word.len() as i32 || len == 5 * word.len() as i32 {
+                    let word_len = word.len() as i32;
+                    if len == word_len || len == 5 * word_len {
                         output.push(word)
-                    } 
+                    }
                 }
             }
         }
-
         output
     }
 }
@@ -79,15 +76,28 @@ mod test {
 
     #[test]
     fn tc_2() {
+        let words = vec!["adsdf".to_string(), "sfd".to_string()];
+        let s = Solution::new();
+        let answer = s.find_words(words);
+        assert!(compare_vector(
+            &answer,
+            &vec!["adsdf".to_string(), "sfd".to_string()]
+        ));
+    }
+
+    #[test]
+    fn tc_3() {
         let words = vec![
-            "adsdf".to_string(),
-            "sfd".to_string()
+            String::from("Hello"),
+            String::from("Alaska"),
+            String::from("Dad"),
+            String::from("Peace"),
         ];
         let s = Solution::new();
         let answer = s.find_words(words);
-        assert!(compare_vector(&answer, &vec![
-            "adsdf".to_string(),
-            "sfd".to_string()
-        ]));
+        assert!(compare_vector(
+            &answer,
+            &vec!["Alaska".to_string(), "Dad".to_string()]
+        ));
     }
 }
