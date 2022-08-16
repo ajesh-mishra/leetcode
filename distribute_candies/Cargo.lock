@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "valid_anagram"
+name = "distribute_candies"
 version = "0.1.0"
