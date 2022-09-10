@@ -28,10 +28,13 @@ impl Solution {
                 Ordering::Greater => order.is_increasing = false,
                 Ordering::Less => order.is_decreasing = false,
             }
+            if !order.is_increasing && !order.is_decreasing {
+                return false;
+            }
             count += 1;
         }
 
-        order.is_increasing != order.is_decreasing || (order.is_increasing && order.is_decreasing)
+        order.is_increasing || order.is_decreasing
     }
 }
 
