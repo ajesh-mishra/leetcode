@@ -2,7 +2,7 @@ struct Solution {}
 
 impl Solution {
     pub fn bitwise_complement(n: i32) -> i32 {
-        !n & ((n as u32).next_power_of_two() - 1).max(1) as i32         
+        !n & ((n as u32).next_power_of_two() - 1).max(1) as i32    
     }
     pub fn bitwise_complement_1(n: i32) -> i32 {
         let nb = format!("{:b}", n);
