@@ -11,10 +11,10 @@ struct Solution {}
 impl Solution {
     pub fn largest_integer(mut num: i32) -> i32 {
         let mut sequence: Vec<Parity> = Vec::new();
-        let mut even = BinaryHeap::new();
-        let mut odd = BinaryHeap::new();
+        let mut even: BinaryHeap<i32> = BinaryHeap::new();
+        let mut odd: BinaryHeap<i32> = BinaryHeap::new();
         while num != 0 {
-            let digit = num % 10;
+            let digit: i32 = num % 10;
             match digit % 2 {
                 0 => {
                     even.push(digit);
@@ -27,7 +27,7 @@ impl Solution {
             }
             num /= 10;
         }
-        let mut result = 0;
+        let mut result: i32 = 0;
         for parity in sequence.iter().rev() {
             result = match parity {
                 Parity::Even => (result * 10) + even.pop().unwrap(),
@@ -40,4 +40,14 @@ impl Solution {
 
 fn main() {
     println!("{}", Solution::largest_integer(65875));
+}
+
+#[cfg(test)]
+mod test {
+    use super::Solution;
+
+    #[test]
+    fn ut_1() {
+        assert_eq!(Solution::largest_integer(65875), 87655);
+    }
 }
