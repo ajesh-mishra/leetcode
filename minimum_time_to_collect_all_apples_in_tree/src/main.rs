@@ -57,7 +57,6 @@ impl Solution {
             .for_each(|(edge, _)| {
                 Self::inner(&edges, edge as i32, &mut all_paths);
             });
-        println!("{:?}", all_paths);
         (all_paths.len() * 2) as _
     }
 }
